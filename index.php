@@ -83,7 +83,7 @@
                 <th scope="row">1</th>
                 <?php
 
-                foreach ($hotels[1] as $element) {
+                foreach ($hotels[0] as $element) {
                     echo "<td> {$element} </td>";
                 }
 
@@ -93,6 +93,18 @@
             </tr>
             <tr>
                 <th scope="row">2</th>
+                <?php
+
+                foreach ($hotels[1] as $element) {
+                    echo "<td> {$element} </td>";
+                }
+
+
+
+                ?>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
                 <?php
 
                 foreach ($hotels[2] as $element) {
