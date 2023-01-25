@@ -53,6 +53,23 @@
 
     ?>
 
+    <pre>
+        <?php
+
+            foreach ($hotels as $element) {
+                
+                foreach ($element as $key => $value) {
+                    echo "\n";
+                    echo $key . " : " . $value;
+
+
+                }   
+
+                echo "\n";
+            }
+            
+        ?>
+    </pre>
 
 </body>
 
