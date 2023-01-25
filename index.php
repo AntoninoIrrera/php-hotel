@@ -70,10 +70,11 @@
         <label for="Si">Si</label>
         <input type="radio" id="No" name="parking" value="No">
         <label for="No">No</label>
+       
+        <label for="vote">Voto:</label>
+        <input type="number" id="vote" name="vote">
         <button type="submit">Invia</button>
     </form>
-
-
 
 
     <table class="table">
@@ -94,17 +95,72 @@
         <tbody>
             <?php
 
-            
-            
+            if (isset($_GET["parking"]) and isset($_GET["vote"])) {
 
 
-            if(isset($_GET["parking"])){
                 if ($_GET["parking"] == 'Si') {
                     $_GET["parking"] = true;
                 } else {
                     $_GET["parking"] = false;
                 }
+                $contatore = 1;
+                for ($i = 0; $i < count($hotels); $i++) {
 
+                    if ($hotels[$i]["parking"] == $_GET["parking"] and $hotels[$i]["vote"] >= $_GET["vote"]) {
+                        echo
+                        "<tr> 
+                        <th scope='row'>{$contatore}</th>";
+
+
+                        $contatore++;
+
+                        if ($hotels[$i]["parking"]) {
+                            $hotels[$i]["parking"] = "Si";
+                        } else {
+                            $hotels[$i]["parking"] = "No";
+                        }
+
+
+
+                        foreach ($hotels[$i] as $element) {
+                            echo "<td> {$element} </td>";
+                        }
+
+                        echo "</tr>";
+                    } else {
+
+
+                        echo
+                        "<tr class='d-none'> 
+                    <th scope='row'>{$contatore}</th>";
+
+
+                        $contatore++;
+
+                        if ($hotels[$i]["parking"]) {
+                            $hotels[$i]["parking"] = "Si";
+                        } else {
+                            $hotels[$i]["parking"] = "No";
+                        }
+
+
+
+                        foreach ($hotels[$i] as $element) {
+                            echo "<td> {$element} </td>";
+                        }
+
+                        echo "</tr>";
+                    }
+                }
+            } 
+            elseif (isset($_GET["parking"])) {
+                
+
+                    if ($_GET["parking"] == 'Si') {
+                        $_GET["parking"] = true;
+                    } else {
+                        $_GET["parking"] = false;
+                    }
                 $contatore = 1;
                 for ($i = 0; $i < count($hotels); $i++) {
 
@@ -154,11 +210,15 @@
                         echo "</tr>";
                     }
                 }
+            }
 
-            }else{
+
+            elseif (isset($_GET["vote"])) {
+               
                 $contatore = 1;
                 for ($i = 0; $i < count($hotels); $i++) {
 
+                    if ($hotels[$i]["vote"] >= $_GET["vote"]) {
                         echo
                         "<tr> 
                         <th scope='row'>{$contatore}</th>";
@@ -179,12 +239,72 @@
                         }
 
                         echo "</tr>";
+                    } else {
+
+
+                        echo
+                        "<tr class='d-none'> 
+                    <th scope='row'>{$contatore}</th>";
+
+
+                        $contatore++;
+
+                        if ($hotels[$i]["parking"]) {
+                            $hotels[$i]["parking"] = "Si";
+                        } else {
+                            $hotels[$i]["parking"] = "No";
+                        }
+
+
+
+                        foreach ($hotels[$i] as $element) {
+                            echo "<td> {$element} </td>";
+                        }
+
+                        echo "</tr>";
                     }
-            }
+                }
+            } 
 
 
+          
+            
             
 
+
+           
+
+            if(!isset($_GET["vote"]) and !isset($_GET["parking"])){
+
+                $contatore = 1;
+                for ($i = 0; $i < count($hotels); $i++) {
+                    
+                    echo
+                    "<tr> 
+                    <th scope='row'>{$contatore}</th>";
+                    
+                    
+                    $contatore++;
+                    
+                    if ($hotels[$i]["parking"]) {
+                        $hotels[$i]["parking"] = "Si";
+                        } else {
+                            $hotels[$i]["parking"] = "No";
+                        }
+                        
+                        
+                        
+                        foreach ($hotels[$i] as $element) {
+                            echo "<td> {$element} </td>";
+                        }
+                        
+                        echo "</tr>";
+                    }
+                    
+                    
+                    
+                    
+                }
             
 
             ?>
