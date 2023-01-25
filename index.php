@@ -50,6 +50,7 @@
             'vote' => 2,
             'distance_to_center' => 50
         ],
+        
 
     ];
 
@@ -79,66 +80,25 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <?php
+            <?php 
+                $contatore = 1;
+                for ($i=0; $i < count($hotels) ; $i++) { 
 
-                foreach ($hotels[0] as $element) {
-                    echo "<td> {$element} </td>";
+                   echo
+                    "<tr> 
+                        <th scope='row'>{$contatore}</th>";
+
+
+                    $contatore++;
+
+                    foreach ($hotels[$i] as $element) {
+                        echo "<td> {$element} </td>";
+                    }
+                    echo "</tr>";
                 }
 
+            ?>
 
-
-                ?>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <?php
-
-                foreach ($hotels[1] as $element) {
-                    echo "<td> {$element} </td>";
-                }
-
-
-
-                ?>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <?php
-
-                foreach ($hotels[2] as $element) {
-                    echo "<td> {$element} </td>";
-                }
-
-
-
-                ?>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <?php
-
-                foreach ($hotels[3] as $element) {
-                    echo "<td> {$element} </td>";
-                }
-
-
-
-                ?>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <?php
-
-                foreach ($hotels[4] as $element) {
-                    echo "<td> {$element} </td>";
-                }
-
-
-
-                ?>
-            </tr>
         </tbody>
     </table>
 
